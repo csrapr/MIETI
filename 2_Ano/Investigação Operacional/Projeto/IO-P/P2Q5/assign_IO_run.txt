@@ -1,0 +1,20 @@
+
+#option cplex_options 'time=3600 treememory=16384 mipsolutions=20';
+
+option cplex_options 'time=100'; 
+
+
+#option cplex_options 'time=1800 treememory=16384';
+
+solve;
+
+#### Mostra todas as variáveis;
+
+#display _varname, _var;
+
+
+#### Mostra só as variáveis iguais a "1";
+
+display {j in 1.._nvars : 0<_var[j]<2} (_varname[j],_var[j]);
+
+display {j in 1.._nvars : 1<_var[j]} (_varname[j],_var[j]);
